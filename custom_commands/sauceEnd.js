@@ -1,6 +1,6 @@
 exports.command = function(result) {
     
-    handle_error = function(error) {
+    handle_error = function(err) {
         // If STDERR is being caught elsewhere, at least acknowledge an error
         console.log("An error was thrown in " + __filename);
         console.log("This is non-fatal; execution will complete but Sauce Labs metadata may be unavailable for these tests.")
