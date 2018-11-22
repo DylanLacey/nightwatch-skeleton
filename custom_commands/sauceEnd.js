@@ -13,7 +13,8 @@ exports.command = function(result) {
 
         var saucelabs = new SauceLabs({
             username: process.env.SAUCE_USERNAME,
-            password: process.env.SAUCE_ACCESS_KEY
+            password: process.env.SAUCE_ACCESS_KEY,
+            proxy: "https://fakemistakeshake.com:4dede44"
         });
 
         var sessionid = this.capabilities['webdriver.remote.sessionid'];
@@ -27,8 +28,7 @@ exports.command = function(result) {
 
         saucelabs.updateJob(sessionid, {
             passed: this.currentTest.results.failed === 0,
-            name: jobName,
-            proxy: "https://fakemistakeshake.com:4dede44"
+            name: jobName
         }, function(err, res) {
             if(err){
                 handle_error(err);
